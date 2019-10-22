@@ -58,9 +58,16 @@ export function UserPage({match}) {
 
   return (
     <div className="container">
+      <h1>{user.name}</h1>
       {isDeleted && <Redirect to="/home/" />}
       {error && <Error error={error} />}
-      {isLoading && <p>cargando....</p>}
+      {isLoading && (
+        <div className="loading">
+          <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+      )}
       <input value={state.name} name="name" onChange={handleChange} />
       <input
         value={state.email}

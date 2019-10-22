@@ -1,17 +1,20 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import "../styles/Header.css";
 export const Header = ({userIsLoged, user}) => (
-  <header>
+  <header className="Header">
     <h2>
       {userIsLoged ? (
-        <Link to="/">LOGIN CRUD</Link>
-      ) : (
         <Link to="/home/"> LOGIN CRUD</Link>
+      ) : (
+        <Link to="/">LOGIN CRUD</Link>
       )}
     </h2>
     <nav>
       {userIsLoged ? (
-        <Link to={`/user/${user._id}`}> Mi perfil</Link>
+        <>
+          <Link to={`/user/${user._id}`}>Mi perfil</Link>
+        </>
       ) : (
         <ul>
           <li>

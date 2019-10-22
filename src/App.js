@@ -13,8 +13,12 @@ function App() {
   const [userIsLoged, setUserIsLoged] = useState(false);
 
   useEffect(() => {
+    console.log(token);
     if (token && !userIsLoged) {
       setUserIsLoged(true);
+    }
+    if (!token) {
+      setUserIsLoged(false);
     }
   }, [token, userIsLoged]);
 
@@ -23,8 +27,20 @@ function App() {
       <Layout userIsLoged={userIsLoged}>
         <Switch>
           <Route exact path="/" component={Landing}></Route>
-          <Route exact path="/login" component={Login}></Route>
-          <Route exact path="/signup" component={Signup}></Route>
+          <Route
+            exact
+            path="/login"
+            component={() => (
+              <Login login={() => setUserIsLoged(true)} />
+            )}
+          ></Route>
+          <Route
+            exact
+            path="/signup"
+            component={() => (
+              <Signup login={() => setUserIsLoged(true)} />
+            )}
+          ></Route>
           <Route exact path="/home/" component={UsersList} />
           <Route exact path="/user/:userId" component={UserPage} />
         </Switch>

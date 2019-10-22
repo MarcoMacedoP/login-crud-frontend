@@ -24,7 +24,13 @@ export function UsersList() {
     <div>
       <h1>Lista de usuarios</h1>
       {error && <Error error={error} />}
-      {isLoading && <p>cargando....</p>}
+      {isLoading && (
+        <div className="loading">
+          <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+      )}
       {users.length > 0 &&
         users.map(user => (
           <User key={user._id} name={user.name} about={user.name} />

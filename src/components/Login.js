@@ -4,7 +4,7 @@ import {BaseForm} from "./BaseForm";
 import {callApi} from "../functions/callApi";
 import {Error} from "./Error";
 
-export function Login() {
+export function Login({login}) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [isRedirect, setRedirect] = useState(false);
@@ -26,6 +26,7 @@ export function Login() {
         setIsLoading(false);
         localStorage.setItem("token", data.token.accessToken);
         localStorage.setItem("user", JSON.stringify(data.user));
+        login(true);
         setRedirect(true);
       })
       .catch(error => {
@@ -42,8 +43,6 @@ export function Login() {
 
   return (
     <>
-      {isLoading && <p>Cargando...</p>}
-      {isRedirect && <Redirect to="/home/" />}
       <BaseForm message="Inicia sesión" onButtonClick={handleClick}>
         <input
           name="email"
@@ -61,6 +60,14 @@ export function Login() {
         />
       </BaseForm>
       {error && <Error error={error} />}
+      {isRedirect && <Redirect to="/home/" />}
+      {isLoading && (
+        <div className="loading">
+          <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+      )}
     </>
   );
 }

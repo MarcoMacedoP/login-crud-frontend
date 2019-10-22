@@ -1,0 +1,9 @@
+.Header {
+  display: flex;
+  justify-content: space-between;
+}
+.Header nav {
+  display: flex;
+  flex-direction: column;
+  padding: 0 1rem;
+}
