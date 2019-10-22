@@ -1,0 +1,16 @@
+.BaseForm {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+  justify-content: center;
+}
+.BaseForm form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.BaseForm input,
+.BaseForm textarea {
+  margin: 0.5rem 0;
+}
