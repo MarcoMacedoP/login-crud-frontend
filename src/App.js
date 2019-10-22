@@ -6,6 +6,7 @@ import {Layout} from "./components/Layout";
 import {Login} from "./components/Login";
 import {Signup} from "./components/Signup";
 import {UsersList} from "./components/UsersList";
+import {UserPage} from "./components/UserPage";
 
 function App() {
   const token = localStorage.getItem("token");
@@ -25,6 +26,7 @@ function App() {
           <Route exact path="/login" component={Login}></Route>
           <Route exact path="/signup" component={Signup}></Route>
           <Route exact path="/home/" component={UsersList} />
+          <Route exact path="/user/:userId" component={UserPage} />
         </Switch>
       </Layout>
     </BrowserRouter>

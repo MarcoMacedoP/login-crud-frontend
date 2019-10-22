@@ -12,6 +12,7 @@ html {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 main {
+  padding: 2rem;
   width: 100vw;
   height: 100vh;
 }
